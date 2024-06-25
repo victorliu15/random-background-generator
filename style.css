@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito";
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: lightgray;
+}
+
+.container {
+    background-color: white;
+    border: 0.25vw solid black;
+    width: 60vw;
+    height: 70vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -40%);
+    overflow: hidden;
+}
+
+.btn {
+    padding: 1vw;
+    border-radius: 0.5vw;
+}
+
+#generateBtn {
+    position: absolute;
+    width: 10vw;
+    font-size: 1vw;
+    left: 44%;
+    top: 10%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
+}
+
+#generateBtn:hover {
+    transform: translateX(-50%) scale(1.02);
+}
+
+#downloadBtn {
+    position: absolute;
+    width: 10vw;
+    font-size: 1vw;
+    left: 56%;
+    top: 10%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
+}
+
+#downloadBtn:hover {
+    transform: translateX(-50%) scale(1.02);
+}
+
+.container .block {
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    background: #444;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container .block:nth-child(3n + 1) {
+    background: #444;
+}
+
+.container .block:nth-child(3n + 2) {
+    background: white;
+}
+
+.container .block:nth-child(3n + 3) {
+    background: cyan;
+}
