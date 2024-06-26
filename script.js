@@ -9,9 +9,9 @@ function getRandomColor() {
     return color;
 }
 
-function createSquares() {
+function createSquares(n) {
     container.innerHTML = '';
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < n; i++) {
         let block = document.createElement('div');
         block.classList.add('block');
         block.style.backgroundColor = getRandomColor();
@@ -19,9 +19,9 @@ function createSquares() {
     }
 }
 
-function createCircles() {
+function createCircles(n) {
     container.innerHTML = '';
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < n; i++) {
         let block = document.createElement('div');
         block.classList.add('block');
         block.style.backgroundColor = getRandomColor();
@@ -30,9 +30,9 @@ function createCircles() {
     }
 }
 
-function createTriangles() {
+function createTriangles(n) {
     container.innerHTML = '';
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < n; i++) {
         let block = document.createElement('div');
         block.classList.add('block');
         block.style.left = "45%";
@@ -47,9 +47,9 @@ function createTriangles() {
     }
 }
 
-function createStars() {
+function createStars(n) {
     container.innerHTML = '';
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < n; i++) {
         let block = document.createElement('div');
         block.classList.add('block');
         block.style.position = 'relative';
@@ -74,8 +74,19 @@ function createStars() {
     }
 }
 
-function generate() {
-    createStars();
+function generate(shape, n) {
+    if (shape == "squares") {
+        createSquares(n);
+    }
+    else if (shape == "circles") {
+        createCircles(n);
+    }
+    else if (shape == "triangles") {
+        createTriangles(n);
+    }
+    else if (shape == "stars") {
+        createStars(n);
+    }
     anime({
         targets: '.block',
         translateX: function() {
@@ -92,4 +103,44 @@ function generate() {
     });
 }
 
-document.getElementById("generateBtn").addEventListener("click", generate);
+let currentSelect = "";
+let quantity = 0;
+
+document.getElementById("quantity").addEventListener("change", function() {
+    quantity = parseInt(document.getElementById("quantity").value);
+    if (quantity != 0 && currentSelect != "") {
+        document.getElementById("generateBtn").removeAttribute("disabled");
+    }
+});
+
+document.getElementById("options").addEventListener("change", function() {
+    if (quantity != 0) {
+        document.getElementById("generateBtn").removeAttribute("disabled");
+    }
+    let choice = document.getElementById("options").value;
+    switch (choice) {
+        case "squares":
+            currentSelect = "squares";
+            break;
+        case "circles":
+            currentSelect = "circles";
+            break;
+        case "triangles":
+            currentSelect = "triangles";
+            break;
+        case "stars":
+            currentSelect = "stars";
+            break;
+    }
+});
+
+
+document.getElementById("generateBtn").addEventListener("click", function() {
+    if (document.getElementById("quantity").value != "") {
+        quantity = parseInt(document.getElementById("quantity").value);
+    }
+    if (currentSelect != "" && quantity != 0) {
+        generate(currentSelect, quantity);
+        document.getElementById("downloadBtn").removeAttribute("disabled");
+    }
+});

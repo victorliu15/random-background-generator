@@ -26,40 +26,29 @@ body {
     overflow: hidden;
 }
 
-.btn {
-    padding: 1vw;
-    border-radius: 0.5vw;
-}
+
 
 #generateBtn {
-    position: absolute;
     width: 10vw;
     font-size: 1vw;
-    left: 44%;
-    top: 10%;
-    transform: translateX(-50%);
     transition: transform 0.3s ease;
     box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
 }
 
 #generateBtn:hover {
-    transform: translateX(-50%) scale(1.02);
+    transform: scale(1.02);
     cursor: pointer;
 }
 
 #downloadBtn {
-    position: absolute;
     width: 10vw;
     font-size: 1vw;
-    left: 56%;
-    top: 10%;
-    transform: translateX(-50%);
     transition: transform 0.3s ease;
     box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
 }
 
 #downloadBtn:hover {
-    transform: translateX(-50%) scale(1.02);
+    transform: scale(1.02);
     cursor: pointer;
 }
 
@@ -90,10 +79,6 @@ body {
 #options {
     width: 10vw;
     height: 7vh;
-    z-index: 10;
-    position: absolute;
-    top: 10%;
-    left: 27%;
     border-radius: 0.5vw;
     box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
@@ -102,4 +87,27 @@ body {
 #options:hover {
     transform: scale(1.02);
     cursor: pointer;
+}
+
+#quantity {
+    font-size: 1vw;
+    text-align: center;
+    width: 10vw;
+    height: 7vh;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+#quantity:hover {
+    transform: scale(1.02);
+    cursor: text;
+}
+
+.top {
+    padding: 1vw;
+    border-radius: 0.5vw;
+    z-index: 15;
+    margin: 1vw;
+    margin-top: -70vh;
 }
