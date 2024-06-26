@@ -9,20 +9,73 @@ function getRandomColor() {
     return color;
 }
 
-function createBlocks() {
+function createSquares() {
     container.innerHTML = '';
     for (let i = 0; i < 100; i++) {
         let block = document.createElement('div');
         block.classList.add('block');
         block.style.backgroundColor = getRandomColor();
-        block.style.width = '${Math.random() * 4 + 1}vw';
-        block.style.height = block.style.width;
         container.appendChild(block);
     }
 }
 
+function createCircles() {
+    container.innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+        let block = document.createElement('div');
+        block.classList.add('block');
+        block.style.backgroundColor = getRandomColor();
+        block.style.borderRadius = '50%';
+        container.appendChild(block);
+    }
+}
+
+function createTriangles() {
+    container.innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+        let block = document.createElement('div');
+        block.classList.add('block');
+        block.style.left = "45%";
+        block.style.top = "40%";
+        block.style.backgroundColor = "transparent";
+        block.style.borderLeft = '2vw solid transparent';
+        block.style.borderRight = '2vw solid transparent';
+        block.style.borderBottom = `4vw solid ${getRandomColor()}`;
+        block.style.margin = '1vw';
+        block.style.boxShadow = "0 0 0 0 rgb(0, 0, 0, 0)";
+        container.appendChild(block);
+    }
+}
+
+function createStars() {
+    container.innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+        let block = document.createElement('div');
+        block.classList.add('block');
+        block.style.position = 'relative';
+        block.style.display = 'inline-block';
+        block.style.width = '0';
+        block.style.height = '0';
+        block.style.margin = '0.25vh';
+        block.style.left = "30%";
+        block.style.top = "40%";
+        let color = getRandomColor();;
+        for (let i = 0; i < 5; i++) {
+            const triangle = document.createElement('div');
+            triangle.style.position = 'absolute';
+            triangle.style.borderLeft = '1vw solid transparent';
+            triangle.style.borderRight = '1vw solid transparent';
+            triangle.style.borderBottom = `2vw solid ${color}`;
+            triangle.style.transform = `rotate(${i * 72}deg)`;
+            triangle.style.transformOrigin = 'center bottom';
+            block.appendChild(triangle);
+        container.appendChild(block);
+        }
+    }
+}
+
 function generate() {
-    createBlocks();
+    createStars();
     anime({
         targets: '.block',
         translateX: function() {
@@ -32,10 +85,10 @@ function generate() {
             return anime.random(-350, 350);
         },
         scale: function() {
-            return anime.random(1, 3);
+            return anime.random(1, 4);
         },
         easing: 'easeInOutQuad',
-        duration: 750,
+        duration: 500,
     });
 }
 

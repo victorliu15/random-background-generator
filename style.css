@@ -44,6 +44,7 @@ body {
 
 #generateBtn:hover {
     transform: translateX(-50%) scale(1.02);
+    cursor: pointer;
 }
 
 #downloadBtn {
@@ -59,6 +60,7 @@ body {
 
 #downloadBtn:hover {
     transform: translateX(-50%) scale(1.02);
+    cursor: pointer;
 }
 
 .container .block {
@@ -83,4 +85,21 @@ body {
 
 .container .block:nth-child(3n + 3) {
     background: cyan;
+}
+
+#options {
+    width: 10vw;
+    height: 7vh;
+    z-index: 10;
+    position: absolute;
+    top: 10%;
+    left: 27%;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+#options:hover {
+    transform: scale(1.02);
+    cursor: pointer;
 }
