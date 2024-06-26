@@ -10,16 +10,29 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <input type="text" class="top" id="quantity" placeholder="How many shapes">
-    <select class="top" id="options" name="options">
-        <option value="" disabled selected>Select shape</option>
-        <option value="squares">Squares</option>
-        <option value="circles">Circles</option>
-        <option value="triangles">Triangles</option>
-        <option value="stars">Stars</option>
-    </select>
-    <button class="top" id="generateBtn" disabled>Generate</button>
-    <button class="top" id="downloadBtn" disabled>Download</button>
+    <div class="sidebar">
+        <input type="text" class="top" id="quantity" placeholder="Shape quantity">
+        <select class="top" id="color" name="color">
+            <option value="" disabled selected>Select color</option>
+            <option value="random">Random</option>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+        </select>
+        <select class="top" id="options" name="options">
+            <option value="" disabled selected>Select shape</option>
+            <option value="squares">Squares</option>
+            <option value="circles">Circles</option>
+            <option value="triangles">Triangles</option>
+            <option value="stars">Stars</option>
+        </select>
+        <button class="top" id="generateBtn" disabled>Generate</button>
+        <button class="top" id="downloadBtn" disabled>Download</button>
+    </div>
+    <h1 id="title">Random Background Generator</h1>
     <div class="container"></div>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

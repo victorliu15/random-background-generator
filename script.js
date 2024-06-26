@@ -9,30 +9,48 @@ function getRandomColor() {
     return color;
 }
 
-function createSquares(n) {
+function createSquares(n, shapeColor) {
     container.innerHTML = '';
     for (let i = 0; i < n; i++) {
+        if (shapeColor == "random") {
+            var color = getRandomColor();
+        }
+        else {
+            var color = shapeColor;
+        }
         let block = document.createElement('div');
         block.classList.add('block');
-        block.style.backgroundColor = getRandomColor();
+        block.style.backgroundColor = color;
         container.appendChild(block);
     }
 }
 
-function createCircles(n) {
+function createCircles(n, shapeColor) {
     container.innerHTML = '';
     for (let i = 0; i < n; i++) {
+        if (shapeColor == "random") {
+            var color = getRandomColor();
+        }
+        else {
+            var color = shapeColor;
+        }
         let block = document.createElement('div');
         block.classList.add('block');
-        block.style.backgroundColor = getRandomColor();
+        block.style.backgroundColor = color;
         block.style.borderRadius = '50%';
         container.appendChild(block);
     }
 }
 
-function createTriangles(n) {
+function createTriangles(n, shapeColor) {
     container.innerHTML = '';
     for (let i = 0; i < n; i++) {
+        if (shapeColor == "random") {
+            var color = getRandomColor();
+        }
+        else {
+            var color = shapeColor;
+        }
         let block = document.createElement('div');
         block.classList.add('block');
         block.style.left = "45%";
@@ -40,14 +58,14 @@ function createTriangles(n) {
         block.style.backgroundColor = "transparent";
         block.style.borderLeft = '2vw solid transparent';
         block.style.borderRight = '2vw solid transparent';
-        block.style.borderBottom = `4vw solid ${getRandomColor()}`;
+        block.style.borderBottom = `4vw solid ${color}`;
         block.style.margin = '1vw';
         block.style.boxShadow = "0 0 0 0 rgb(0, 0, 0, 0)";
         container.appendChild(block);
     }
 }
 
-function createStars(n) {
+function createStars(n, shapeColor) {
     container.innerHTML = '';
     for (let i = 0; i < n; i++) {
         let block = document.createElement('div');
@@ -57,9 +75,14 @@ function createStars(n) {
         block.style.width = '0';
         block.style.height = '0';
         block.style.margin = '0.25vh';
-        block.style.left = "30%";
+        block.style.left = "35%";
         block.style.top = "40%";
-        let color = getRandomColor();;
+        if (shapeColor == "random") {
+            var color = getRandomColor();
+        }
+        else {
+            var color = shapeColor;
+        }
         for (let i = 0; i < 5; i++) {
             const triangle = document.createElement('div');
             triangle.style.position = 'absolute';
@@ -74,18 +97,18 @@ function createStars(n) {
     }
 }
 
-function generate(shape, n) {
+function generate(shape, n, color) {
     if (shape == "squares") {
-        createSquares(n);
+        createSquares(n, color);
     }
     else if (shape == "circles") {
-        createCircles(n);
+        createCircles(n, color);
     }
     else if (shape == "triangles") {
-        createTriangles(n);
+        createTriangles(n, color);
     }
     else if (shape == "stars") {
-        createStars(n);
+        createStars(n, color);
     }
     anime({
         targets: '.block',
@@ -105,18 +128,46 @@ function generate(shape, n) {
 
 let currentSelect = "";
 let quantity = 0;
+let color = "";
 
 document.getElementById("quantity").addEventListener("change", function() {
     quantity = parseInt(document.getElementById("quantity").value);
-    if (quantity != 0 && currentSelect != "") {
+    if (quantity != 0 && color != "" && currentSelect != "") {
+        document.getElementById("generateBtn").removeAttribute("disabled");
+    }
+});
+
+document.getElementById("color").addEventListener("change", function() {
+    let choice = document.getElementById("color").value;
+    switch (choice) {
+        case "random":
+            color = "random";
+            break;
+        case "red":
+            color = "red";
+            break;
+        case "orange":
+            color = "orange";
+            break;
+        case "yellow":
+            color = "yellow";
+            break;
+        case "green":
+            color = "green";
+            break;
+        case "blue":
+            color = "blue";
+            break;
+        case "purple":
+            color = "purple";
+            break;
+    }
+    if (quantity != 0 && color != "" && currentSelect != "") {
         document.getElementById("generateBtn").removeAttribute("disabled");
     }
 });
 
 document.getElementById("options").addEventListener("change", function() {
-    if (quantity != 0) {
-        document.getElementById("generateBtn").removeAttribute("disabled");
-    }
     let choice = document.getElementById("options").value;
     switch (choice) {
         case "squares":
@@ -132,6 +183,9 @@ document.getElementById("options").addEventListener("change", function() {
             currentSelect = "stars";
             break;
     }
+    if (quantity != 0 && color != "" && currentSelect != "") {
+        document.getElementById("generateBtn").removeAttribute("disabled");
+    }
 });
 
 
@@ -140,7 +194,7 @@ document.getElementById("generateBtn").addEventListener("click", function() {
         quantity = parseInt(document.getElementById("quantity").value);
     }
     if (currentSelect != "" && quantity != 0) {
-        generate(currentSelect, quantity);
+        generate(currentSelect, quantity, color);
         document.getElementById("downloadBtn").removeAttribute("disabled");
     }
 });
