@@ -198,3 +198,12 @@ document.getElementById("generateBtn").addEventListener("click", function() {
         document.getElementById("downloadBtn").removeAttribute("disabled");
     }
 });
+
+document.getElementById("downloadBtn").addEventListener("click", function() {
+    domtoimage.toBlob(document.getElementById("background")).then(function(blob) {
+        window.saveAs(blob, 'background.png');
+    })
+    .catch(function(error) {
+        alert(error);
+    });
+});

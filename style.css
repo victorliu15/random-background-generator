@@ -43,16 +43,24 @@ body {
 .container {
     background-color: white;
     border: 0.25vw solid black;
+    margin-left: 18vw;
+    margin-top: 15vh;
     width: 60vw;
     height: 70vh;
-    position: absolute;
-    left: 58%;
-    top: 50%;
-    transform: translate(-50%, -40%);
+    position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
+.capture-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
 
 #generateBtn {
     width: 10vw;
