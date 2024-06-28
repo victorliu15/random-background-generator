@@ -70,12 +70,12 @@ function createStars(n, shapeColor) {
     for (let i = 0; i < n; i++) {
         let block = document.createElement('div');
         block.classList.add('block');
-        block.style.position = 'relative';
+        block.style.position = 'absolute';
         block.style.display = 'inline-block';
         block.style.width = '0';
         block.style.height = '0';
         block.style.margin = '0.25vh';
-        block.style.left = "35%";
+        block.style.left = "45%";
         block.style.top = "40%";
         if (shapeColor == "random") {
             var color = getRandomColor();
@@ -200,8 +200,13 @@ document.getElementById("generateBtn").addEventListener("click", function() {
 });
 
 document.getElementById("downloadBtn").addEventListener("click", function() {
+    var container = document.querySelector(".container");
+    container.style.marginLeft = "0";
+    container.style.marginTop = "0";
     domtoimage.toBlob(document.getElementById("background")).then(function(blob) {
         window.saveAs(blob, 'background.png');
+        container.style.marginLeft = "18vw";
+        container.style.marginTop = "15vh";
     })
     .catch(function(error) {
         alert(error);
