@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="sidebar">
+    <div class="header">
+        <h1 id="title">Random Background Generator</h1>
+    </div>
+    <div class="footer">
         <input type="text" class="top" id="quantity" placeholder="Shape quantity">
         <select class="top" id="color" name="color">
             <option value="" disabled selected>Select color</option>
@@ -26,13 +29,12 @@
             <option value="" disabled selected>Select shape</option>
             <option value="squares">Squares</option>
             <option value="circles">Circles</option>
-            <option value="triangles">Triangles</option>
-            <option value="stars">Stars</option>
+            <option value="rectangles">Rectangle</option>
+            <option value="ellipses">Ellipses</option>
         </select>
         <button class="top" id="generateBtn" disabled>Generate</button>
         <button class="top" id="downloadBtn" disabled>Download</button>
     </div>
-    <h1 id="title">Random Background Generator</h1>
     <div class="capture-wrapper" id="background">
         <div class="container"></div>
     </div>
